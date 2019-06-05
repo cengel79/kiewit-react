@@ -13,7 +13,7 @@ export async function handleError(error) {
 export async function fetchGet(requestUri, itemId) {
   try {
     const response = await fetch(scrubId(requestUri, itemId));
-    return handleResponse(response);
+    return await handleResponse(response);
   } catch (error) {
     await handleError(error);
   }
@@ -24,7 +24,7 @@ export async function fetchDelete(requestUri, itemId) {
     const response = await fetch(scrubId(requestUri, itemId), {
       method: "DELETE"
     });
-    return handleResponse(response);
+    return await handleResponse(response);
   } catch (error) {
     await handleError(error);
   }
